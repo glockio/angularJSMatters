@@ -1,0 +1,23 @@
+{
+  "name": "steven",
+  "main": "app.js",
+  "version": "0.0.0",
+  "authors": [
+    "Greg Laughlin <greg.laughlin81@hotmail.com>"
+  ],
+  "description": "my first angular application",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2",
+    "angular": "~1.4.3",
+    "angular-ui-router": "~0.2.15"
+  }
+}

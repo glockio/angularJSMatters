@@ -1,0 +1,40 @@
+$header-height: 100px;
+
+.matters-layout{
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  bottom: 0px; left: 0px; right: 0px;
+
+
+  .content-area{
+    border: 1px solid #ccc;
+    min-height: 500px;
+    height: 100%;
+    width: 66.66%;
+    position: absolute;
+    overflow: scroll;
+    right: 0px; top: $header-height; bottom: 0px;
+
+  }
+
+  .side-bar-wrapper{
+    position: absolute;
+    width: 33.33%;
+    overflow: scroll;
+    top: $header-height; left: 0px;
+    bottom: 0px;
+    height: 100%;
+    border: 1px solid #ccc;
+    padding-bottom: $header-height;
+    padding-top: 20px;
+  }
+
+
+  .header-section{
+    height: $header-height;
+    position: absolute;
+    top: 0px; right: 0px; left: 0px;
+  }
+}

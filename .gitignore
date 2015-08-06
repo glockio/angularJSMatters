@@ -1,0 +1,6 @@
+# common
+node_modules
+public/components
+.DS_Store
+*~
+_build

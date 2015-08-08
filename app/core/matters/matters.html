@@ -1,104 +1,17 @@
-<div class="matters-layout">
-
-  <div class="header-section">
-    <div class="row">
-      <div class="small-3 columns">
-        <h2 class="logo">Matters</h2>
-      </div>
-      <div class="small-3 columns">
-         <input type="text" ng-model="searchClientName" placeholder="Search For Client...">
-      </div>
-      <div class="small-3 columns">
-         <input type="text" ng-model="searchKeyWord" placeholder="Search by keyword">
-      </div>
-      <div class="small-3 columns">
-         Select All:<input type="checkbox" ng-model="selectAllMatters" ng-click="toggleAllMatters()">
-           <input type="checkbox" ng-model="hideClosedMatters">
-         Hide All: {{hideClosedMatters}}
-      </div>
+<div class="row matters-layout" >
+  <div class="row header-section">
+    <div class="small-12 columns">
+      Header Section
     </div>
   </div>
 
-  <div class="side-bar-wrapper">
-    <ul class="clients-list">
-      <li ng-repeat="client in clients | filter:{client_name:searchClientName}"
-        class="client-item" ng-show="filteredMatters.length">
-
-        <div class="client-details">
-          <div class="avatar-wrapper">
-            <img src="https://randomuser.me/api/portraits/thumb/women/93.jpg" class="avatar">
-          </div>
-          <span class="client-name">{{client.client_name}}</span>
-         <!--  <input type="checkbox" ng-model="client.selectAllMatters" ng-click="toggleClientMatters(client)"> -->
-        </div>
-
-        <div class="divider-with-text">
-          <span class="divider-text">
-            <ng-pluralize count="filteredMatters.length"
-                          when="{'one': '{} Matter',
-                                'other': '{} Matters'}">
-            </ng-pluralize>
-        </div>
-        <ul class="matters-list">
-          <li ng-repeat="matter in (filteredMatters=(client.matters |
-            filter:keyWordFilter( searchKeyWord)))"
-            ng-click="setFocusMatter(matter)" ng-show="displayMatter(matter)"
-            class="matter-item"
-            ng-class="matter.status"
-
-            >
-            <div class="row">
-              <div class=" columns">
-                <span class="selected-indicator" ng-click="toggleSelectedStatus($event, matter)">
-                  <i class="ion-ios-circle-outline  selected-indicator"
-                  ng-hide="matter.selected"></i>
-                  <i class="ion-ios-circle-filled  selected-indicator" ng-show="matter.selected"></i>
-                </span>
-
-                {{matter.number}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="small-12 columns matter-detials trucate">
-                {{matter.description}}
-              </div>
-            </div>
-
-            <!-- <input type="checkbox" ng-model= "matter.selected"> -->
-
-
-
-<!--
-              <button ng-click="deleteMatter($parent.client, matter)">
-               Delete
-              </button>
-
-              <button ng-click="closeMatter($parent.client, matter)" ng-model="matter.status">
-                Close
-              </button> -->
-
-            </li>
-        </ul>
-      </li>
-    </ul>
+  <div class="row strip-margin">
+    <div class="medium-4 columns sidebar">
+        side bar section
+    </div>
+    <div class="medium-8 columns strip-margin content-area">
+      content-section
+    </div>
   </div>
 
-    <div class="content-area" ui-view ng-model="focusMatter" ng-controller="MattersItemCtrl">
-
-
-      <div class="header" ng-class="focusMatter.status">
-        {{focusMatter.number}}
-        <span class="status">{{focusMatter.status}}</span>
-      </div>
-        <p class="description">
-          {{focusMatter.description}}
-        </p>
-      </div>
-
-
-
-      <div class="placeholder" ng-show="showPlaceHolder">
-         <span class="icon entypo-icon-note "></span>
-      </div>
-    </div>
 </div>

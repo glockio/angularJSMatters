@@ -1,0 +1,60 @@
+
+.matter-item{
+    padding: 10px;
+    margin: 10px;
+    border-bottom: 1px dashed #ccc;
+    &.closed{
+      color: #bbb;
+      .selected-indicator{
+        color: #ccc;
+      }
+
+    }
+    .selected-indicator{
+      color:#6FD1CD;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .matter-detials {
+      font-size: 12px;
+      color: #aaa;
+    }
+}
+
+.matter-detail{
+  $header-padding: 20px;
+  .header{
+    position: relative;
+    height: 100px;
+
+    background-color: #1EAAF1;
+    font-size: 17px;
+    font-weight: 200;
+    color: white;
+
+    line-height: 100px;
+    padding: 0px $header-padding;
+    &.closed{
+      background-color: #e74c3c;
+
+      .status{
+        background-color: #E63826;
+      }
+    }
+
+    .status{
+      float: right;
+      margin-right: -$header-padding;
+      padding: 0px 10px;
+      font-weight: 400;
+      text-transform: capitalize;
+      background-color: #1AA3E9;
+    }
+  }
+
+  .description{
+    padding: 20px;
+    line-height: 1.3em;
+  }
+}

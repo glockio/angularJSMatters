@@ -1,0 +1,51 @@
+$header-height: 40px;
+
+.matters-layout{
+  position: fixed;
+
+  .header-section{ height: 40px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .sidebar{
+    height: 100%;
+    position: fixed;
+    overflow: scroll;
+    border: 1px solid #ccc;
+    background: linear-gradient(90deg, #fff, #EEEEEE);
+  }
+
+  .content-area{
+    background-color: blue;
+    position: fixed; right: 0px;
+    overflow: scroll; height: 100%;
+  }
+
+}
+
+
+// overflow: hidden;
+// border: 1px solid #ccc;
+// bottom: 0px; left: 0px; right: 0px;
+
+// .content-area{
+//   border: 1px solid #ccc;
+//   min-height: 500px;
+//   height: 100%;
+//   width: 60%;
+//   position: absolute;
+//   overflow: scroll;
+//   right: 0px; top: $header-height; bottom: 0px;
+
+// }
+
+
+
+//   position: absolute;
+//   // width: 40%;
+//   overflow: scroll;
+//   top: $header-height; left: 0px;
+//   bottom: 0px;
+//   height: 100%;
+
+//   padding-bottom: $header-height;

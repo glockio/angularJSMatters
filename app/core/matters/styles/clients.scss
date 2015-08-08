@@ -1,0 +1,33 @@
+.client-item{
+    $avatar-size: 60px;
+    border-left: 1px solid #ddd;
+    border-bottom: 2px solid #B0B0B0;
+    margin: 20px 5px; background-color: #fff;
+    box-shadow: -2px 3px 7px 0px rgba(40, 36, 36, 0.38);
+    padding: 10px;
+
+    margin-top: 3px; margin-bottom: 8px;
+
+    &:hover{
+      box-shadow: -3px 5px 4px 2px rgba(40, 36, 36, 0.38);
+    }
+    .client-details {
+      line-height: $avatar-size;
+      position: relative;
+      margin-left: $avatar-size + 10px;
+      height: $avatar-size;
+      padding-left: 15px;
+    }
+    .client-name {font-size: 16px; letter-spacing: 1px; font-weight: bold;}
+
+    .avatar-wrapper{
+      position: absolute;
+      left: -$avatar-size;
+    }
+
+    .avatar {border-radius: 50%; height: $avatar-size; width: $avatar-size;}
+
+    &.focus{
+      border-bottom: 3px solid #B574CD;
+    }
+  }

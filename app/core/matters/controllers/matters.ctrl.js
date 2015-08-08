@@ -7,8 +7,6 @@ function  MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersF
   $scope.searchKeyWord = "";
 
 
-
-
   $scope.setFocusMatter = function (matter) {
     $scope.showPlaceHolder = false;
     $scope.focusMatter = matter;
@@ -42,8 +40,6 @@ function  MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersF
   };
 
 
-
-
   $scope.toggleAllMatters = function(){
     angular.forEach($scope.clients, function (client) {
       client.selectAllMatters =  $scope.selectAllMatters;
@@ -58,7 +54,15 @@ function  MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersF
   };
 
 
+  $scope.isClosed= function (matter) {
+    return matter.status === "closed";
+  };
 
+  $scope.toggleSelectedStatus = function  (e,matter) {
+    e.preventDefault()
+    e.stopPropagation()
+    matter.selected ? (matter.selected = false) : (matter.selected = true);
+  };
 
 
 };

@@ -1,4 +1,4 @@
-$header-height: 100px;
+$header-height: 40px;
 
 .matters-layout{
   height: 100%;
@@ -7,12 +7,11 @@ $header-height: 100px;
   border: 1px solid #ccc;
   bottom: 0px; left: 0px; right: 0px;
 
-
   .content-area{
     border: 1px solid #ccc;
     min-height: 500px;
     height: 100%;
-    width: 66.66%;
+    width: 60%;
     position: absolute;
     overflow: scroll;
     right: 0px; top: $header-height; bottom: 0px;
@@ -21,14 +20,14 @@ $header-height: 100px;
 
   .side-bar-wrapper{
     position: absolute;
-    width: 33.33%;
+    width: 40%;
     overflow: scroll;
     top: $header-height; left: 0px;
     bottom: 0px;
     height: 100%;
     border: 1px solid #ccc;
     padding-bottom: $header-height;
-    padding-top: 20px;
+    background: linear-gradient(90deg, #fff, #EEEEEE);
   }
 
 
@@ -37,4 +36,108 @@ $header-height: 100px;
     position: absolute;
     top: 0px; right: 0px; left: 0px;
   }
+
+
+  .client-item{
+    $avatar-size: 60px;
+    border-left: 1px solid #ddd;
+    border-bottom: 2px solid #B0B0B0;
+    margin: 20px 5px; background-color: #fff;
+    box-shadow: -2px 3px 7px 0px rgba(40, 36, 36, 0.38);
+    padding: 10px;
+
+    margin-top: 3px; margin-bottom: 8px;
+
+    &:hover{
+      box-shadow: -3px 5px 4px 2px rgba(40, 36, 36, 0.38);
+    }
+    .client-details {
+      line-height: $avatar-size;
+      position: relative;
+      margin-left: $avatar-size + 10px;
+      height: $avatar-size;
+      padding-left: 15px;
+    }
+    .client-name {font-size: 16px; letter-spacing: 1px; font-weight: bold;}
+
+    .avatar-wrapper{
+      position: absolute;
+      left: -$avatar-size;
+    }
+
+    .avatar {border-radius: 50%; height: $avatar-size; width: $avatar-size;}
+
+    &.focus{
+      border-bottom: 3px solid #B574CD;
+    }
+  }
+
+  .matter-item{
+    padding: 10px;
+    margin: 10px;
+    border-bottom: 1px dashed #ccc;
+    &.closed{
+      color: #bbb;
+      .selected-indicator{
+        color: #ccc;
+      }
+
+    }
+    .selected-indicator{
+      color:#6FD1CD;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .matter-detials {
+      font-size: 12px;
+      color: #aaa;
+    }
+  }
+
+  .content-area{
+    $avatar-size: 60px;
+    $header-padding: 20px;
+    .header{
+      position: relative;
+      height: 100px;
+
+      background-color: #1EAAF1;
+      font-size: 17px;
+      font-weight: 200;
+      color: white;
+
+      line-height: 100px;
+      padding: 0px $header-padding;
+      &.closed{
+        background-color: #e74c3c;
+
+        .status{
+          background-color: #E63826;
+        }
+      }
+
+      .status{
+        float: right;
+        margin-right: -$header-padding;
+        padding: 0px 10px;
+        font-weight: 400;
+        text-transform: capitalize;
+        background-color: #1AA3E9;
+      }
+    }
+
+    .description{
+      padding: 20px;
+      line-height: 1.3em;
+    }
+
+    .avatar-wrapper{
+      position: absolute;
+      left: -$avatar-size;
+    }
+
+    .avatar {border-radius: 50%; height: $avatar-size; width: $avatar-size;}
+  }
 }
+

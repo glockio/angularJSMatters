@@ -25,7 +25,8 @@ var SRC = {
   vendorScripts: "./public/components/**/*.js",
   vendorStyles: "./public/components/**/*.css",
   html: "./app/**/*.html",
-  bowerDir: "./public/components"
+  bowerDir: "./public/components",
+  "fonts": "./public/components/ionicons/fonts/*.{ttf,woff,eof,svg}"
 
 };
 
@@ -36,6 +37,7 @@ var DEST =  {
   indexHTML: "./_build",
   vendorScripts: "./_build/js",
   vendorStyles: "./_build/css",
+  "fonts": "./_build/fonts"
 };
 
 
@@ -78,8 +80,10 @@ gulp.task('clean-build', function (callback) {
   return del(['./_build/'], callback);
 });
 
+
+
 // Build Assets
-gulp.task("bundle-assets", [ "build-scripts", "build-styles", "build-html"]);
+gulp.task("bundle-assets", [ "build-scripts", "build-styles", "build-html", "icons"]);
 gulp.task("build-scripts", ["app-scripts", "vendor-scripts"]);
 gulp.task("build-styles", ["app-styles", "vendor-styles"]);
 
@@ -99,6 +103,11 @@ gulp.task('app-scripts', function () {
         .pipe( concat('build.js'))
         .pipe(gulp.dest(DEST.scripts))
         .pipe(connect.reload());
+});
+
+gulp.task('icons', function() {
+  gulp.src(SRC.fonts)
+  .pipe(gulp.dest(DEST.fonts));
 });
 
 

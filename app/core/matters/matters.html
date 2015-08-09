@@ -1,4 +1,4 @@
-<div class="row matters-layout" >
+<div class="row matters-layout" ng-class="showMatterDetails()" >
   <div class="row header-section">
     <div class="small-3 columns">
       <h3 class="logo">Matters</h3>
@@ -18,37 +18,71 @@
 
   <div class="row strip-margin">
     <div class="medium-5 columns sidebar">
-       <ul class="clients-list">
-
-        <li ng-repeat="client in clients | filter:{client_name:searchClientName}" class="client-item" ng-controller="clientItemCtrl" ng-show="filteredMatters.length">
-
-          <div class="client-details">
-            <avatar image-source="{{client.avatar_url}}"></avatar>
-            <span class="client-name">{{client.client_name}}</span>
+      <div class="row">
+        <div class="small-12 medium-5 columns
+          sidebar-actions" ng-class="{'show-mass-actions':showMassActionsMenu}"
+          ng-mouseleave="showMassActionsMenu=false">
+          <div class="row">
+            <div class="small-4 columns">
+              <div class="action" ng-class="
+                {'active':selectAllMatters}"
+                ng-click="toggleAllMatters()">
+                Select All
+              </div>
+            </div>
+            <div class="small-6 columns"
+              ng-class="{'active':hideClosedMatters}"
+              ng-click="toggleHideClosedMatters()">
+                <div class="action">Hide Closed</div>
+             </div>
+            <div class="small-2 columns">
+              <div class="action">
+                <span class="ion-ios-arrow-down" ng-click="toggleShowMassActionsMenu()"></span>
+                <ul class="mass-action-menu">
+                  <li ng-click="closeAllSelected()">Close Selected</li>
+                  <li ng-click="deleteAllSelected()">Delete Selected</li>
+                </ul>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+           <ul class="clients-list scrollable-content">
+            <li ng-repeat="client in clients | filter:{client_name:searchClientName}" class="client-item" ng-controller="clientItemCtrl" ng-show="filteredMatters.length">
+              <div class="client-details">
+                <avatar image-source="{{client.avatar_url}}"></avatar>
+                <div class="client-name">{{client.client_name}}</div>
+              </div>
+              <div class="divider-with-text">
+                <span class="divider-text">
+                  <ng-pluralize count="filteredMatters.length"
+                                when="{'one': '{} Matter',
+                                      'other': '{} Matters'}">
+                  </ng-pluralize>
+              </div>
+              <ul class="matters-list">
+                <matter-item ng-repeat="matter in (filteredMatters=(client.matters | filter:mattersStatusFilter() | filter:keyWordFilter(searchKeyWord))) "
+                  matter="matter" client="client">
+                </matter-item>
+              </ul> <!-- end matters list -->
+            </li> <!-- end client item -->
+          </ul><!-- end clients list -->
+        </div>
+      </div>
 
-          <div class="divider-with-text">
-            <span class="divider-text">
-              <ng-pluralize count="filteredMatters.length"
-                            when="{'one': '{} Matter',
-                                  'other': '{} Matters'}">
-              </ng-pluralize>
-          </div>
-          <ul class="matters-list">
-            <matter-item ng-repeat="matter in (filteredMatters=(client.matters | filter:mattersStatusFilter() | filter:keyWordFilter(searchKeyWord))) "
-              matter="matter">
-            </matter-item>
-          </ul> <!-- end matters list -->
-        </li> <!-- end client item -->
-      </ul><!-- end clients list -->
     </div>
     <div class="medium-7 columns strip-margin  content-area">
-      <div class="matter-detail">
+      <div class="matter-detail" ng-controller="MatterDetail">
         <div class="header" ng-class="focusMatter.status">
-          {{focusMatter.number}}
+          <span class="back-btn ion-ios-arrow-back" ng-click="clearFocusMatter()"></span>
+          <span class="number">{{focusMatter.number}}</span>
           <span class="status">{{focusMatter.status}}</span>
         </div>
-          <p class="description"> {{focusMatter.description}}</p>
+
+          <p class="description"> {{focusMatter.description}}
+          </p>
         </div>
         <div class="placeholder" ng-show="showPlaceHolder">
            <span class="icon entypo-icon-note "></span>

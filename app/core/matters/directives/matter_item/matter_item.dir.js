@@ -4,7 +4,7 @@ angular.module("app.matters").directive('matterItem', function() {
     restrict: 'EA',
     scope: {
       matter: '=',
-      focusMatter: "="
+      "client": "="
     },
     templateUrl: "core/matters/directives/matter_item/matter_item.html",
     controller: "matterItemCtrl"

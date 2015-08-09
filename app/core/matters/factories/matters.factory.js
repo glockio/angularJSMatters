@@ -4,15 +4,14 @@ function mattersFactory($rootScope) {
   factory = {};
 
   var _searchableMatterProperties = ["description","status", "number"]
-  factory.focusMatter = undefined;
+
+  var _selectedMatters = [];
 
   factory.matterHasKeyWord = function (matter, keyword) {
     var regex = new RegExp(".*" + keyword + ".*", "i");
     var foundMatch = false;
     for (i = 0; i < _searchableMatterProperties.length; i++) {
       var property = _searchableMatterProperties[i]
-      console.log(property)
-      console.log(matter[property])
       if (regex.test(matter[property])) {
         foundMatch = true;
         break;
@@ -30,8 +29,6 @@ function mattersFactory($rootScope) {
   factory.getFocusMatter = function(){
     return factory.focusMatter;
   };
-
-
 
 
 

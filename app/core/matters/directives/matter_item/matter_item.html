@@ -1,5 +1,5 @@
  <li class="matter-item" ng-click="setFocusMatter(matter)"
-  ng-class="matter.status">
+  ng-class="matter.status" ng-mouseleave="hideActions()">
   <div class="row">
     <div class=" small-12 columns">
       <span class="selected-indicator" ng-click="toggleSelectedStatus($event)">
@@ -8,6 +8,16 @@
         <i class="ion-ios-circle-filled  selected-indicator" ng-show="matter.selected"></i>
       </span>
       {{matter.number}}
+    </div>
+
+    <div class="actions-wrapper">
+      <span class="actions-indicator ion-ios-arrow-down"ng-click="toggleShowActions($event)"></span>
+
+      <ul class="matter-actions" ng-show="showActions">
+        <li class="action" ng-hide="isClosed()" ng-click="closeMatter($event)">Close Matter</li>
+        <li class="action" ng-show="isClosed()"ng-click="openMatter($event)">Reopen Matter</li>
+        <li class="action" ng-click="deleteMatter($event)">Delete Matter</li>
+      </ul>
     </div>
   </div>
   <div class="row">

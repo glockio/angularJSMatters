@@ -1,6 +1,8 @@
-function MattersDetail ($scope, $templateCache, $filter, clientsFactory) {
+function MatterDetail ($scope, $templateCache, $filter, mattersFactory) {
 
-
+  $scope.clearFocusMatter = function () {
+    mattersFactory.setFocusMatter("");
+  }
 };
 
-angular.module("app.matters").controller("MattersDetail",  ["$scope", "$templateCache","$filter", "mattersFactory",  MattersDetail]);
+angular.module("app.matters").controller("MatterDetail",  ["$scope", "$templateCache","$filter", "mattersFactory",  MatterDetail]);

@@ -1,8 +1,8 @@
-
+@import "./_globals";
 
 .matters-layout{
   position: fixed;
-
+  $sidebar-header-height: 100px;
   .header-section{
     border-bottom: 1px solid #ccc;
   }
@@ -13,12 +13,93 @@
     overflow: scroll;
     background: linear-gradient(90deg, #fff, #EEEEEE);
     padding-bottom: 80px;
+    z-index: 2;
+
+    .scrollable-content{
+      margin-top: ($sidebar-header-height + 12px);
+    }
+  }
+
+  .sidebar-actions{
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 3;
+    height: $sidebar-header-height;
+    -webkit-backface-visibility: hidden; // needed to prevent jerk on scroll
+    background-color: rgba(102, 51, 153, 0.7); // use rbga to reset opacity on child el
+    color: white;
+    line-height:  $sidebar-header-height;
+    text-align: center;
+
+    .action{
+      display: inline-block;
+      color: #AC83D5;
+      color: #C9AAE7;
+      cursor: pointer;
+
+      &:hover{
+        color: white;
+      }
+      &.active{
+        color: white;
+        text-decoration: underline;
+      }
+    }
+
+    .mass-action-menu{
+      display: none;
+      position: absolute;
+      z-index: 4;
+      top: 57px;
+      right: 21px;
+      width: 160px;
+      border: 1px solid;
+      border-bottom: 1px solid;
+      color: #683B95;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 5px;
+
+      li{
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        &:hover{
+          color: white;
+          background-color: rgba(102, 51, 153, 0.5);
+        }
+      }
+    }
+    &.show-mass-actions{
+      .mass-action-menu{display: block;}
+    }
+
   }
 
   .content-area{
     position: fixed; right: 0px;
     overflow: scroll; height: 100%;
     border-left: 2px solid #ddd;
-    padding: 0px;
+    padding: 0px; height: 100%;
+    padding-bottom: 80px;
+
   }
+
+  @media (max-width: $small-break-point) {
+    .sidebar{
+      transform: translateX(0%);
+      transition:all 0.4s ease;
+
+      //force hardware acceleration for mobile
+      transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      -webkit-perspective: 1000;
+    }
+    &.show-details{
+      .sidebar{
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+
 }

@@ -1,22 +1,18 @@
 angular.module("app.matters").factory("clientsFactory", function($http){
   // factory is JS facade pattern. private methods go outside factory object
+
   var factory = {};
   var _clients = undefined;
 
   factory.getClients = function() {
+    // caching clients in this case is pointless
+    // but getClients would typically be an http request where I could cache response
     if(_clients){
       return _clients
     } else {
       return _clients = _initClientsWithMatters();
 
     };
-  };
-
-  factory.findClientByName = function(client_name){
-    var client = _clients.filter(function(client){
-      return client.client_name === client_name
-    })[0];
-    return client;
   };
 
   function _initClientsWithMatters () {
@@ -94,8 +90,6 @@ angular.module("app.matters").factory("clientsFactory", function($http){
           }
         ]
       }
-
-      // Fake one
     ]);
   };
 

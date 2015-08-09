@@ -1,18 +1,19 @@
-function MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersFactory) {
+function MattersCtrl ($rootScope, $scope, $templateCache, $filter, clientsFactory, mattersFactory) {
 
   $scope.clients = clientsFactory.getClients();
   $scope.focusMatter = mattersFactory.focusMatter;
   $scope.showPlaceHolder = true;
   $scope.hideClosedMatters = false;
   $scope.searchKeyWord = "";
+  $scope.detailsVisible = false;
 
-  $scope.setFocusMatter = function (matter) {
-    $scope.showPlaceHolder = false;
-    $scope.focusMatter = matter;
+  $scope.showMatterDetails = function () {
+    return $scope.detailsVisible ? "show-details" : ""
   }
-
   $scope.$on("focusMatterChanged", function () {
+    $scope.detailsVisible = true;
     $scope.focusMatter = mattersFactory.getFocusMatter()
+    $scope.detailsVisible  = !!$scope.focusMatter
   });
 
   $scope.keyWordFilter = function(keyWord){
@@ -35,7 +36,12 @@ function MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersFa
     );
   };
 
+  $scope.toggleHideClosedMatters = function () {
+    $scope.hideClosedMatters = !$scope.hideClosedMatters
+  };
+
   $scope.toggleAllMatters = function(){
+    $scope.selectAllMatters = !$scope.selectAllMatters
     angular.forEach($scope.clients, function (client) {
       client.selectAllMatters =  $scope.selectAllMatters;
       $scope.toggleClientMatters(client)
@@ -47,11 +53,26 @@ function MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersFa
       matter.selected = client.selectAllMatters
     });
   };
+
+  $scope.toggleShowMassActionsMenu = function () {
+    $scope.showMassActionsMenu =  !$scope.showMassActionsMenu
+  }
+
+
+  $scope.closeAllSelected = function () {
+    console.log("closeAllSelectedMatters");
+    $rootScope.$broadcast("closeAllSelectedMatters");
+  }
+
+  $scope.deleteAllSelected = function () {
+    $rootScope.$broadcast("deleteAllSelectedMatters");
+  }
+
 };
 
 angular.module("app.matters").controller("MattersCtrl",
   [
-    "$scope", "$templateCache", "$filter",
+    "$rootScope", "$scope", "$templateCache", "$filter",
     "clientsFactory", "mattersFactory",MattersCtrl
 
   ]

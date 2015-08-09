@@ -1,21 +1,17 @@
 <div class="row matters-layout" ng-class="showMatterDetails()" >
   <div class="row header-section">
-    <div class="small-3 columns">
+    <div class="medium-4 columns">
       <h3 class="logo">Matters</h3>
     </div>
-    <div class="small-3 columns">
-       <input type="text" ng-model="searchClientName" placeholder="Search For Client...">
-    </div>
-    <div class="small-3 columns">
-       <input type="text" ng-model="searchKeyWord" placeholder="Search by keyword">
-    </div>
-    <div class="small-3 columns">
-       Select All:<input type="checkbox" ng-model="selectAllMatters" ng-click="toggleAllMatters()">
-         <input type="checkbox" ng-model="hideClosedMatters">
-       Hide All: {{hideClosedMatters}}
+    <div class="search-fields-wrapper">
+      <div class="medium-4 columns">
+         <input type="text" ng-model="searchClientName" placeholder="Search For Client...">
+      </div>
+      <div class="medium-4 columns">
+         <input type="text" ng-model="searchKeyWord" placeholder="Search by keyword">
+      </div>
     </div>
   </div>
-
   <div class="row strip-margin">
     <div class="medium-5 columns sidebar">
       <div class="row">
@@ -23,14 +19,14 @@
           sidebar-actions" ng-class="{'show-mass-actions':showMassActionsMenu}"
           ng-mouseleave="showMassActionsMenu=false">
           <div class="row">
-            <div class="small-4 columns">
+            <div class="small-5 columns">
               <div class="action" ng-class="
                 {'active':selectAllMatters}"
                 ng-click="toggleAllMatters()">
                 Select All
               </div>
             </div>
-            <div class="small-6 columns"
+            <div class="small-5 columns"
               ng-class="{'active':hideClosedMatters}"
               ng-click="toggleHideClosedMatters()">
                 <div class="action">Hide Closed</div>
@@ -73,20 +69,21 @@
       </div>
 
     </div>
-    <div class="medium-7 columns strip-margin  content-area">
-      <div class="matter-detail" ng-controller="MatterDetail">
-        <div class="header" ng-class="focusMatter.status">
+    <div class="medium-7 columns strip-margin content-area">
+      <div class="matter-detail" ng-controller="MatterDetail"
+       ng-class="{'show-placeholder': !focusMatter}">
+        <div class="header" ng-class="focusMatter.status"
+        >
           <span class="back-btn ion-ios-arrow-back" ng-click="clearFocusMatter()"></span>
           <span class="number">{{focusMatter.number}}</span>
           <span class="status">{{focusMatter.status}}</span>
         </div>
 
-          <p class="description"> {{focusMatter.description}}
-          </p>
-        </div>
-        <div class="placeholder" ng-show="showPlaceHolder">
-           <span class="icon entypo-icon-note "></span>
-        </div>
+        <p class="description"> {{focusMatter.description}}</p>
+
+        <div class="placeholder">
+          <span class="icon ion-ios-information-outline "></span>
+             No matter has been selected.
         </div>
       </div>
     </div>

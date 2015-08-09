@@ -9,11 +9,6 @@
   padding: 10px 30px 10px 15px;
   margin-right: 25px;
   position: relative;
-
-
-
-  // background-color: blue;
-
   border-bottom: 1px dashed #ccc;
   &.closed{
     color: #bbb;
@@ -35,6 +30,7 @@
       top: 0px;
       position: absolute;
     }
+
   }
 
   .actions-wrapper{
@@ -76,6 +72,28 @@
 
 .matter-detail{
   $header-padding: 20px;
+
+  .placeholder{
+    text-align: center;
+    color: #ddd;
+    display: none;
+    text-algin:center;
+    .icon{
+      display: block;
+      font-size: 60px;
+    }
+  }
+
+  &.show-placeholder{
+    .placeholder{
+      display: block;
+    }
+
+    .header{
+      background-color: #A8D4EA;
+    }
+  }
+
   .header{
     position: relative;
     height: 100px;
@@ -125,3 +143,4 @@
 
 
 }
+

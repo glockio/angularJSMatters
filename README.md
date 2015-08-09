@@ -1,5 +1,5 @@
 
-Welcome to Steven, my first angular application.
+First angular application.
 
 
 ##Setup

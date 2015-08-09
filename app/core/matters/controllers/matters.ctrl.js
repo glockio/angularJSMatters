@@ -1,16 +1,19 @@
-function  MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersFactory) {
+function MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersFactory) {
 
   $scope.clients = clientsFactory.getClients();
-  $scope.focusMatter = undefined;
+  $scope.focusMatter = mattersFactory.focusMatter;
   $scope.showPlaceHolder = true;
-  $scope.hideClosedMatters = true;
+  $scope.hideClosedMatters = false;
   $scope.searchKeyWord = "";
-
 
   $scope.setFocusMatter = function (matter) {
     $scope.showPlaceHolder = false;
     $scope.focusMatter = matter;
   }
+
+  $scope.$on("focusMatterChanged", function () {
+    $scope.focusMatter = mattersFactory.getFocusMatter()
+  });
 
   $scope.keyWordFilter = function(keyWord){
     return(
@@ -24,21 +27,13 @@ function  MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersF
     );
   };
 
-  $scope.displayMatter = function (matter) {
-    return $scope.hideClosedMatters ? matter.status !== "closed" : true
+  $scope.mattersStatusFilter = function(){
+    return(
+      function (matter) {
+        return $scope.hideClosedMatters ? matter.status !== "closed" : true
+      }
+    );
   };
-
-
-  $scope.closeMatter = function (client, matter) {
-    matter.status="closed";
-    console.log($scope);
-  };
-
-  $scope.deleteMatter = function (client, matter) {
-    index = client.matters.indexOf(matter);
-    client.matters.splice(index,1);
-  };
-
 
   $scope.toggleAllMatters = function(){
     angular.forEach($scope.clients, function (client) {
@@ -52,19 +47,6 @@ function  MattersCtrl ($scope, $templateCache, $filter, clientsFactory, mattersF
       matter.selected = client.selectAllMatters
     });
   };
-
-
-  $scope.isClosed= function (matter) {
-    return matter.status === "closed";
-  };
-
-  $scope.toggleSelectedStatus = function  (e,matter) {
-    e.preventDefault()
-    e.stopPropagation()
-    matter.selected ? (matter.selected = false) : (matter.selected = true);
-  };
-
-
 };
 
 angular.module("app.matters").controller("MattersCtrl",

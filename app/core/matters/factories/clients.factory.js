@@ -22,24 +22,8 @@ angular.module("app.matters").factory("clientsFactory", function($http){
   function _initClientsWithMatters () {
     return([
       {
-        "client_name": "Floyd, Zeppelin, & Sabbath",
-        "matters": [
-          {
-            "id": 0,
-            "number": "00001 - Floyd, Zeppelin, & Sabbath",
-            "description": "Ut enim ad minim veniam. Ut enim ad minim veniam, Ut enim ad minim veniam.",
-            "status": "open"
-          },
-          {
-            "id": 1,
-            "number": "00002 - Floyd, Zeppelin, & Sabbath",
-            "description": "Ut enim ad minim veniam, quis nostrud exercitation. ",
-            "status": "open"
-          }
-        ]
-      },
-      {
         "client_name": "Thompson, Hunter S. 00005",
+        avatar_url: "http://www.leftways.com/wp-content/uploads/2014/06/hunter-thompson-our-kitchen-sink.jpg",
         "matters": [
           {
             "id": 2,
@@ -56,7 +40,27 @@ angular.module("app.matters").factory("clientsFactory", function($http){
         ]
       },
       {
+        "client_name": "Floyd, Zeppelin, & Sabbath",
+         avatar_url: "http://cps-static.rovicorp.com/3/JPG_400/MI0003/680/MI0003680454.jpg?partner=allrovi.com",
+        "matters": [
+          {
+            "id": 0,
+            "number": "00001 - Floyd, Zeppelin, & Sabbath",
+            "description": "Ut enim ad minim veniam. Ut enim ad minim veniam, Ut enim ad minim veniam.",
+            "status": "open"
+          },
+          {
+            "id": 1,
+            "number": "00002 - Floyd, Zeppelin, & Sabbath",
+            "description": "Ut enim ad minim veniam, quis nostrud exercitation. ",
+            "status": "open"
+          }
+        ]
+      },
+
+      {
         "client_name": "Marley Tosh Livingston",
+        avatar_url: "http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg?partner=allrovi.com",
         "matters": [
           {
             "id": 4,
@@ -74,6 +78,7 @@ angular.module("app.matters").factory("clientsFactory", function($http){
       },
       {
         "client_name": "Watterson, Bill",
+        avatar_url: "http://2.bp.blogspot.com/-9VIdOZFBlek/Uiy9wW1X5PI/AAAAAAAACI0/JvHyPVhWQjw/s1600/watterson.jpg",
         "matters": [
           {
             "id": 4,

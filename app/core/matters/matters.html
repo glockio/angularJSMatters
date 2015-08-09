@@ -1,17 +1,60 @@
 <div class="row matters-layout" >
   <div class="row header-section">
-    <div class="small-12 columns">
-      Header Section
+    <div class="small-3 columns">
+      <h3 class="logo">Matters</h3>
+    </div>
+    <div class="small-3 columns">
+       <input type="text" ng-model="searchClientName" placeholder="Search For Client...">
+    </div>
+    <div class="small-3 columns">
+       <input type="text" ng-model="searchKeyWord" placeholder="Search by keyword">
+    </div>
+    <div class="small-3 columns">
+       Select All:<input type="checkbox" ng-model="selectAllMatters" ng-click="toggleAllMatters()">
+         <input type="checkbox" ng-model="hideClosedMatters">
+       Hide All: {{hideClosedMatters}}
     </div>
   </div>
 
   <div class="row strip-margin">
-    <div class="medium-4 columns sidebar">
-        side bar section
+    <div class="medium-5 columns sidebar">
+       <ul class="clients-list">
+
+        <li ng-repeat="client in clients | filter:{client_name:searchClientName}" class="client-item" ng-controller="clientItemCtrl" ng-show="filteredMatters.length">
+
+          <div class="client-details">
+            <avatar image-source="{{client.avatar_url}}"></avatar>
+            <span class="client-name">{{client.client_name}}</span>
+          </div>
+
+          <div class="divider-with-text">
+            <span class="divider-text">
+              <ng-pluralize count="filteredMatters.length"
+                            when="{'one': '{} Matter',
+                                  'other': '{} Matters'}">
+              </ng-pluralize>
+          </div>
+          <ul class="matters-list">
+            <matter-item ng-repeat="matter in (filteredMatters=(client.matters | filter:mattersStatusFilter() | filter:keyWordFilter(searchKeyWord))) "
+              matter="matter">
+            </matter-item>
+          </ul> <!-- end matters list -->
+        </li> <!-- end client item -->
+      </ul><!-- end clients list -->
     </div>
-    <div class="medium-8 columns strip-margin content-area">
-      content-section
+    <div class="medium-7 columns strip-margin  content-area">
+      <div class="matter-detail">
+        <div class="header" ng-class="focusMatter.status">
+          {{focusMatter.number}}
+          <span class="status">{{focusMatter.status}}</span>
+        </div>
+          <p class="description"> {{focusMatter.description}}</p>
+        </div>
+        <div class="placeholder" ng-show="showPlaceHolder">
+           <span class="icon entypo-icon-note "></span>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>

@@ -1,10 +1,10 @@
 
 
-function mattersFactory() {
+function mattersFactory($rootScope) {
   factory = {};
 
   var _searchableMatterProperties = ["description","status", "number"]
-
+  factory.focusMatter = undefined;
 
   factory.matterHasKeyWord = function (matter, keyword) {
     var regex = new RegExp(".*" + keyword + ".*", "i");
@@ -21,6 +21,19 @@ function mattersFactory() {
     return foundMatch;
   };
 
+  factory.setFocusMatter = function(matter){
+    factory.focusMatter = matter;
+    $rootScope.$broadcast("focusMatterChanged");
+  };
+
+
+  factory.getFocusMatter = function(){
+    return factory.focusMatter;
+  };
+
+
+
+
 
   return factory;
 
@@ -28,4 +41,4 @@ function mattersFactory() {
 };
 
 
-angular.module("app.matters").factory("mattersFactory", [mattersFactory]);
+angular.module("app.matters").factory("mattersFactory", ["$rootScope", mattersFactory]);

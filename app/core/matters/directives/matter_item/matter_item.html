@@ -1,0 +1,18 @@
+ <li class="matter-item" ng-click="setFocusMatter(matter)"
+  ng-class="matter.status">
+  <div class="row">
+    <div class=" small-12 columns">
+      <span class="selected-indicator" ng-click="toggleSelectedStatus($event)">
+        <i class="ion-ios-circle-outline  selected-indicator"
+        ng-hide="matter.selected"></i>
+        <i class="ion-ios-circle-filled  selected-indicator" ng-show="matter.selected"></i>
+      </span>
+      {{matter.number}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns matter-detials trucate">
+      {{matter.description}}
+    </div>
+  </div>
+</li>

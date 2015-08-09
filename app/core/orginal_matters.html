@@ -85,17 +85,21 @@
 
     <div class="content-area" ui-view ng-model="focusMatter" ng-controller="MattersItemCtrl">
       <div class="matter-detial">
-        <div class="header" ng-class="focusMatter.status">
-          {{focusMatter.number}}
-          <span class="status">{{focusMatter.status}}</span>
-        </div>
-          <p class="description">
-            {{focusMatter.description}}
-          </p>
-        </div>
-        <div class="placeholder" ng-show="showPlaceHolder">
-           <span class="icon entypo-icon-note "></span>
-        </div>
+
+      <div class="header" ng-class="focusMatter.status">
+        {{focusMatter.number}}
+        <span class="status">{{focusMatter.status}}</span>
+      </div>
+        <p class="description">
+          {{focusMatter.description}}
+        </p>
+      </div>
+
+
+
+      <div class="placeholder" ng-show="showPlaceHolder">
+         <span class="icon entypo-icon-note "></span>
+      </div>
       </div>
     </div>
 </div>

@@ -363,6 +363,21 @@ function mattersFactory($rootScope) {
 
 angular.module("app.matters").factory("mattersFactory", ["$rootScope", mattersFactory]);
 
+angular.module("app.matters").directive('avatar', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      imageSource: '@',
+      test: "@"
+
+    },
+    templateUrl: "core/matters/directives/avatar/avatar.html",
+    controller: ['$scope', '$templateCache', function($scope, $templateCache) {
+
+    }]
+
+  }
+});
 angular.module("app").directive('textDivider', function() {
   return {
     restrict: 'EA',
@@ -388,19 +403,4 @@ angular.module("app.matters").directive('matterItem', function() {
     templateUrl: "core/matters/directives/matter_item/matter_item.html",
     controller: "matterItemCtrl"
   };
-});
-angular.module("app.matters").directive('avatar', function() {
-  return {
-    restrict: 'E',
-    scope: {
-      imageSource: '@',
-      test: "@"
-
-    },
-    templateUrl: "core/matters/directives/avatar/avatar.html",
-    controller: ['$scope', '$templateCache', function($scope, $templateCache) {
-
-    }]
-
-  }
 });

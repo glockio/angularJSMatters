@@ -9,7 +9,6 @@ angular.module("app.matters").directive('avatar', function() {
     templateUrl: "core/matters/directives/avatar/avatar.html",
     controller: ['$scope', '$templateCache', function($scope, $templateCache) {
 
-
     }]
 
   }

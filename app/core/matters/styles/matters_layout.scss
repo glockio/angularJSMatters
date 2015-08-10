@@ -87,7 +87,7 @@
 
   .content-area{
     position: fixed; right: 0px;
-    overflow: scroll; height: 100%;
+    overflow: scroll;
     border-left: 2px solid #ddd;
     padding: 0px; height: 100%;
     padding-bottom: 80px;
@@ -99,6 +99,7 @@
     .sidebar{
       transform: translateX(0%);
       transition:all 0.4s ease;
+      padding-bottom: 200px;
 
       //force hardware acceleration for mobile
       transform: translate3d(0, 0, 0);

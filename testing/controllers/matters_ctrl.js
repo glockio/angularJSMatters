@@ -1,5 +1,0 @@
-
-// app.controller("AppCtrl", function () {
-
-// };
-

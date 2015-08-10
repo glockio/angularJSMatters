@@ -31,7 +31,6 @@ function mattersFactory($rootScope) {
   };
 
 
-
   return factory;
 
 

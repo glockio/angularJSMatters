@@ -224,49 +224,6 @@ function MatterDetail ($scope, $templateCache, $filter, mattersFactory) {
 };
 
 angular.module("app.matters").controller("MatterDetail",  ["$scope", "$templateCache","$filter", "mattersFactory",  MatterDetail]);
-// angular.module("app").directive('clientMattersList', function() {
-//   // var url = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=imperial&cnt=14&callback=JSON_CALLBACK&q=";
-//   return {
-//     restrict: 'EA',
-//     require: '^clients',
-//     scope: {
-//       clients: '='
-//     },
-//     templateUrl: "core/matters/directives/client_matters_list/client_matters_list.html"
-//     controller: ['$scope', '$http', function($scope, $http) {
-//       $scope.getTemp = function(city) {
-//         $http({
-//           method: 'JSONP',
-//           url: url + city
-//         }).success(function(data) {
-//           var weather = [];
-//           angular.forEach(data.list, function(value){
-//             weather.push(value);
-//           });
-//           $scope.weather = weather;
-//         });
-//       }
-//     }],
-//     link: function(scope, iElement, iAttrs, ctrl) {
-//       scope.getTemp(iAttrs.ngCity);
-//       scope.$watch('weather', function(newVal) {
-//         // the `$watch` function will fire even if the
-//         // weather property is undefined, so we'll
-//         // check for it
-//         if (newVal) {
-//           var highs = [],
-//               width   = 200,
-//               height  = 80;
-
-//           angular.forEach(scope.weather, function(value){
-//             highs.push(value.temp.max);
-//           });
-//           // chart
-//         }
-//       });
-//     }
-//   }
-// });
 angular.module("app.matters").factory("clientsFactory", function($http){
   // factory is JS facade pattern. private methods go outside factory object
 
@@ -398,7 +355,6 @@ function mattersFactory($rootScope) {
   };
 
 
-
   return factory;
 
 
@@ -407,101 +363,18 @@ function mattersFactory($rootScope) {
 
 angular.module("app.matters").factory("mattersFactory", ["$rootScope", mattersFactory]);
 
-
-
-// function ProfileFactory ($http, PROFILE_API_PATH) {
-//   factory = {};
-
-//   // factory.setProfiles = function (clients, callback) {
-//   //   factory._clients = clients;
-//   //   return _fetchRandomProfiles(callback);
-//   // }
-
-
-//   // function _fetchRandomProfiles (callback) {
-//   //   $http({
-//   //       url: PROFILE_API_PATH
-//   //       method: "GET",
-//   //       params: {results: factory.clients.length, gender: "Male"}
-//   //    })
-//   //   .then(_setProfilePhotos(response.data));
-//   // }
-
-//   // function _setProfilePhotos (random_users) {
-
-//   //   for(i=0; i < )
-//   // }
-
-//   return factory;
-
-
-// };
-
-
-// angular.module("app.matters").factory("profileFactory", ["$http", "PROFILE_API_PATH", ProfileFactory]);
-
-
-
-
-
-
-angular.module("app.matters").directive('avatar', function() {
-  return {
-    restrict: 'E',
-    scope: {
-      imageSource: '@',
-      test: "@"
-
-    },
-    templateUrl: "core/matters/directives/avatar/avatar.html",
-    controller: ['$scope', '$templateCache', function($scope, $templateCache) {
-
-
-    }]
-
-  }
-});
-angular.module("app").directive('clientCard', function() {
-  // var url = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=imperial&cnt=14&callback=JSON_CALLBACK&q=";
+angular.module("app").directive('textDivider', function() {
   return {
     restrict: 'EA',
     scope: {
-      client: '='
-
+      collection: '=',
+      pluralName: "@",
+      singleName: "@"
     },
-    templateUrl: "core/matters/directives/client_card/client_card.html",
-    controller: ['$scope', '$http', function($scope, $http) {
-      // $scope.getTemp = function(city) {
-      //   $http({
-      //     method: 'JSONP',
-      //     url: url + city
-      //   }).success(function(data) {
-      //     var weather = [];
-      //     angular.forEach(data.list, function(value){
-      //       weather.push(value);
-      //     });
-      //     $scope.weather = weather;
-      //   });
-      // }
-    }],
-    link: function(scope, iElement, iAttrs, ctrl) {
-      // scope.getTemp(iAttrs.ngCity);
-      // scope.$watch('weather', function(newVal) {
-      //   // the `$watch` function will fire even if the
-      //   // weather property is undefined, so we'll
-      //   // check for it
-      //   if (newVal) {
-      //     var highs = [],
-      //         width   = 200,
-      //         height  = 80;
-
-      //     angular.forEach(scope.weather, function(value){
-      //       highs.push(value.temp.max);
-      //     });
-      //     // chart
-      //   }
-      // });
-    }
+    templateUrl: "core/matters/directives/text_divider/text_divider.html",
+    controller: ['$scope', '$templateCache', function($scope, $templateCache) {
+      // console.log($scope)
+    }]
   }
 });
 angular.module("app.matters").directive('matterItem', function() {
@@ -516,17 +389,18 @@ angular.module("app.matters").directive('matterItem', function() {
     controller: "matterItemCtrl"
   };
 });
-angular.module("app").directive('textDivider', function() {
+angular.module("app.matters").directive('avatar', function() {
   return {
-    restrict: 'EA',
+    restrict: 'E',
     scope: {
-      collection: '=',
-      pluralName: "@",
-      singleName: "@"
+      imageSource: '@',
+      test: "@"
+
     },
-    templateUrl: "core/matters/directives/text_divider/text_divider.html",
+    templateUrl: "core/matters/directives/avatar/avatar.html",
     controller: ['$scope', '$templateCache', function($scope, $templateCache) {
-      // console.log($scope)
+
     }]
+
   }
 });

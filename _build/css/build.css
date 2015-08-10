@@ -240,7 +240,6 @@ ul {
     position: fixed;
     right: 0px;
     overflow: scroll;
-    height: 100%;
     border-left: 2px solid #ddd;
     padding: 0px;
     height: 100%;
@@ -252,6 +251,7 @@ ul {
               transform: translateX(0%);
       -webkit-transition: all 0.4s ease;
               transition: all 0.4s ease;
+      padding-bottom: 200px;
       -webkit-transform: translate3d(0, 0, 0);
               transform: translate3d(0, 0, 0);
       -webkit-backface-visibility: hidden;
@@ -264,4 +264,3 @@ ul {
       -webkit-transition: all 0.4s ease;
               transition: all 0.4s ease;
       display: none; } }
-
